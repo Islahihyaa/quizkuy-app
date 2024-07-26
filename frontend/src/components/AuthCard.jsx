@@ -6,16 +6,16 @@ const AuthCard = ({ type }) => {
   const auth = authData.find((item) =>
     type === "login"
       ? item.title === "Masuk ke QuizKuy"
-      : item.title === "Selamat datang di QuizKuy"
+      : item.title === "Selamat datang di QuizKuy"  
   );
-
+  
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl auth-card">
-      <figure className="border-r-2">
+      <figure className="border-r-2 w-1/2">
         <img src={auth.image} alt="auth image" className="p-6" />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{auth.title}</h2>
+      <div className="card-body w-1/2">
+        <h2 className="card-title mb-2">{auth.title}</h2>
         <form action="">
           {auth.input.map((input, index) => (
             <label key={index}>
@@ -23,12 +23,12 @@ const AuthCard = ({ type }) => {
               <input
                 type={input.type}
                 placeholder={input.placeholder}
-                className="input input-bordered w-full"
+                className="input input-bordered w-full my-2"
               />
             </label>
           ))}
           <div className="card-actions justify-end my-8">
-            <button type="submit" className="btn btn-primary text-white">
+            <button type="submit" className="button">
               {type === "login" ? "Masuk" : "Daftar"}
             </button>
           </div>
@@ -47,4 +47,4 @@ const AuthCard = ({ type }) => {
   );
 };
 
-export default AuthCard;
+export default AuthCard;  

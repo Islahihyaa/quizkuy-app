@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="w-full flex justify-between items-center navbar fixed top-0 bg-white shadow-md z-50">
       <div className={`${styles.flexCenter}`}>
         <Link to={"/"}>
-          <img src={logo} alt="logo" className="w-[176px] h-[64px]" />
+          <img src={logo} alt="logo" className="navbar-img" />
         </Link>
         <ul className="flex items-center justify-end mx-6">
           {navLinks.map((nav, index) => (
