@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ styles, content, to }) => (
-  <Link to={to}>
+const Button = ({ styles, content, to, bgColor, hoverColor, type }) => {
+  const buttonElement = (
     <button
-      type="button"
-      className={`btn p-2 mx-2 font-poppins font-medium text-black rounded-[10px] ${styles}`}
+      type={type}
+      className={`button ${styles}`}
+      style={{ backgroundColor: bgColor }}
+      onMouseOver={(e) => (e.currentTarget.style.backgroundColor = hoverColor)}
+      onMouseOut={(e) => (e.currentTarget.style.backgroundColor = bgColor)}
     >
       {content}
     </button>
-  </Link>
-);
+  );
+
+  return to ? <Link to={to}>{buttonElement}</Link> : buttonElement;
+};
 
 export default Button;

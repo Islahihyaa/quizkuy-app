@@ -174,12 +174,8 @@
   gap: 0.5rem;
   font-weight: 600;
   border-width: 1px;
-  background-color: #00A1FF;
-  color: white;
-}
-
-.button:hover {
-  background-color: #0295ea;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
 .navbar-img{

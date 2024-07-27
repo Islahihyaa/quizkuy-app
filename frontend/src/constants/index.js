@@ -22,11 +22,13 @@ export const authData = [
         label: "Email",
         placeholder: "email",
         type: "email",
+        name: "email",
       },
       {
         label: "Password",
         placeholder: "password",
         type: "password",
+        name: "password",
       },
     ],
     links: [
@@ -44,16 +46,25 @@ export const authData = [
         label: "Email",
         placeholder: "email",
         type: "email",
+        name: "email",
       },
       {
         label: "Username",
         placeholder: "username",
         type: "text",
+        name: "username",
       },
       {
         label: "Password",
         placeholder: "password",
         type: "password",
+        name: "password",
+      },
+      {
+        label: "Password Confirmation",
+        placeholder: "Confirm Password",
+        type: "password",
+        name: "passwordConfirmation",
       },
     ],
     links: [

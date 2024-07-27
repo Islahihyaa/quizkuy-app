@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
-  const [toggleLogin, settoggleLogin] = useState(false);
+
   return (
     <nav className="w-full flex justify-between items-center navbar fixed top-0 bg-white shadow-md z-50">
       <div className={`${styles.flexCenter}`}>
@@ -29,8 +29,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex">
-        <Button content="Masuk" styles={`bg-primary`} to="/login" />
-        <Button content="Daftar" styles={` `} to="/register" />
+        <Button
+          content="Masuk"
+          styles={`text-white`}
+          to="/login"
+          bgColor="#00A1FF"
+          hoverColor="#0295ea"
+        />
+        <Button
+          content="Daftar"
+          styles={`text-black`}
+          to="/register"
+          bgColor="#D3D3D3"
+          hoverColor="#bfbfbf"
+        />
       </div>
     </nav>
   );

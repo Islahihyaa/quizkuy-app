@@ -22,7 +22,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      {/* <div className="flex flex-col py-6">
+      <div className="flex flex-col py-6">
         <div className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 };

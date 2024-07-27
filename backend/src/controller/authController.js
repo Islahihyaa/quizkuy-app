@@ -10,6 +10,11 @@ const createToken = (user_id, expiresIn = "10h") => {
 
 export async function register(req, res) {
   const { username, email, password, passwordConfirmation } = req.body;
+
+  if (!username || !email || !password || !passwordConfirmation) {
+    throw new ValidationError("Field tidak boleh kosong", 400);
+  }
+
   const emailExist = await prisma.user.findUnique({
     where: {
       email: email,
@@ -17,15 +22,15 @@ export async function register(req, res) {
   });
   if (emailExist) throw new ValidationError("Email sudah digunakan", 400);
 
+  if (!validator.isEmail(email))
+    throw new ValidationError("Masukkan email yang valid", 400);
+
   if (password !== passwordConfirmation) {
     throw new ValidationError(
       "Password dan password konfirmasi harus sama",
       400
     );
   }
-
-  if (!validator.isEmail(email))
-    throw new ValidationError("Masukkan email yang valid", 400);
 
   const hashedPassword = await bcrypt.hash(password, 10);
   await prisma.user.create({
