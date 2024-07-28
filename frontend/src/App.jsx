@@ -1,19 +1,15 @@
 import React from "react";
 import styles from "./style";
 import Navbar from "./components/Navbar";
-import Hero from "./pages/Hero";
+import { Outlet } from "react-router-dom";
 
 const App = () => (
   <div className="w-full overflow-hidden">
-    <div className={``}>
-      <div className={``}>
-        <Navbar />
-      </div>
-    </div>
+    <Navbar />
 
-    <div className={`bg-secondary pt-[84px] ${styles.flexCenter}`}>
+    <div className="bg-secondary pt-[84px] min-h-screen flex justify-center">
       <div className={`${styles.boxWidth}`}>
-        <Hero />
+        <Outlet/>
       </div>
     </div>
   </div>

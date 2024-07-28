@@ -182,5 +182,9 @@
   width: 146px;
   height: 42px;
   object-fit: cover;
-  margin-left: 16px;
 }
+
+.active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid #0004df;
+ }

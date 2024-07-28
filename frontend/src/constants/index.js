@@ -75,3 +75,34 @@ export const authData = [
     ],
   },
 ];
+
+export const formQuizData = [
+  {
+    input: [
+      {
+        label: "Jumlah Soal",
+        placeholder: "Jumlah soal",
+        type: "number",
+        name: "amount",
+      },
+      {
+        label: "Kategori",
+        placeholder: "Kategori",
+        type: "text",
+        name: "category",
+      },
+      {
+        label: "Kesulitan",
+        placeholder: "Kesulitan",
+        type: "text",
+        name: "difficulty",
+      },
+      {
+        label: "Tipe",
+        placeholder: "Tipe",
+        type: "text",
+        name: "type",
+      },
+    ],
+  },
+];
