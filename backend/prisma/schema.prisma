@@ -13,4 +13,35 @@ model User {
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+  quizzes   Quiz[]   // Relasi satu-ke-banyak, satu user bisa memiliki banyak quiz
+}
+
+model Quiz {
+  id            String     @id @default(uuid())
+  title         String
+  response_code Int
+  createdAt     DateTime   @default(now())
+  userId        String
+  user          User       @relation(fields: [userId], references: [user_id])
+  questions     Question[]
+}
+
+model Question {
+  id             String    @id @default(uuid())
+  quizId         String
+  type           String
+  difficulty     String
+  category       String
+  question       String
+  correct_answer String
+  quiz           Quiz      @relation(fields: [quizId], references: [id])
+  createdAt      DateTime  @default(now())
+  incorrectAnswers IncorrectAnswer[] // Relasi ke model IncorrectAnswer
+}
+
+model IncorrectAnswer {
+  id        String   @id @default(uuid())
+  text      String
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
 }

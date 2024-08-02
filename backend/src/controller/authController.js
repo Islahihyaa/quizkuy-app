@@ -46,6 +46,10 @@ export async function register(req, res) {
 export async function login(req, res) {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    throw new ValidationError("Field tidak boleh kosong", 400);
+  }
+
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) throw new ValidationError("User tidak ditemukan", 400);
 
