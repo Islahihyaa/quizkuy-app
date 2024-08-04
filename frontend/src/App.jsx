@@ -1,15 +1,14 @@
 import React from "react";
 import styles from "./style";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 import { Outlet } from "react-router-dom";
 
 const App = () => (
   <div className="w-full overflow-hidden">
     <Navbar />
-
-    <div className="bg-secondary pt-[84px] min-h-screen flex justify-center">
+    <div className="flex justify-center bg-secondary pt-24 min-h-screen">
       <div className={`${styles.boxWidth}`}>
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   </div>

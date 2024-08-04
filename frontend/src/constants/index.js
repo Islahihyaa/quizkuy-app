@@ -6,11 +6,6 @@ export const navLinks = [
     title: "Beranda",
     path: "/",
   },
-  {
-    id: "aktivitas",
-    title: "Aktivitas",
-    path: "/activity",
-  },
 ];
 
 export const authData = [
@@ -88,21 +83,46 @@ export const formQuizData = [
       {
         label: "Kategori",
         placeholder: "Kategori",
-        type: "text",
+        type: "select",
         name: "category",
       },
       {
         label: "Kesulitan",
         placeholder: "Kesulitan",
-        type: "text",
+        type: "select",
         name: "difficulty",
+        options: [
+          { id: "easy", name: "Easy" },
+          { id: "medium", name: "Medium" },
+          { id: "hard", name: "Hard" },
+        ],
       },
       {
         label: "Tipe",
         placeholder: "Tipe",
-        type: "text",
+        type: "select",
         name: "type",
+        options: [
+          { id: "multiple", name: "Multiple Choise" },
+          { id: "boolean", name: "True / False" },
+        ],
       },
     ],
   },
 ];
+
+export const countdownData = [
+  {
+    title: "3",
+  },
+  {
+    title: "2",
+  },
+  {
+    title: "1",
+  },
+  {
+    title: "Mulai!",
+  },
+];
+

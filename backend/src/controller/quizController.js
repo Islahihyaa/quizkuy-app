@@ -109,69 +109,24 @@ export const getQuiz = async (req, res) => {
     throw new ValidationError("Quiz tidak ditemukan", 400);
   }
 
-  res.status(200).json(quizData);
-};
-
-export const submitAnswerQuiz = async (req, res) => {
-  try {
-    const { id, currentIndex, question, answer, selectedAnswer } = req.query;
-
-    if (!id || !question || !answer || !selectedAnswer || !currentIndex) {
-      throw new ValidationError("Field tidak boleh kosong", 400);
-    }
-
-    const answers = Array.isArray(answer) ? answer : [answer];
-
-    res.status(200).json({
-      success: true,
-      data: {
-        id,
-        currentIndex,
-        question,
-        answers,
-        selectedAnswer,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getExistingQuiz = async (req, res) => {
-  const { quizId } = req.query;
-  if (!quizId) {
-    throw new ValidationError("Quiz tidak ditemukan", 400);
-  }
-
-  const quiz = await prisma.quiz.findUnique({
-    where: { id: quizId },
-    include: {
-      questions: {
-        include: {
-          incorrectAnswers: true,
-        },
-      },
-    },
-  });
-
-  if (!quiz) {
-    return res.status(404).json({ error: "Quiz tidak ditemukan" });
-  }
-
-  // Format data untuk dikirim ke front-end
-  const formattedQuiz = {
-    id: quiz.id,
-    title: quiz.title,
-    response_code: quiz.response_code,
-    results: quiz.questions.map((question) => ({
-      type: question.type,
-      difficulty: question.difficulty,
-      category: question.category,
+  const modifiedQuizData = {
+    id: quizData.id,
+    title: quizData.title,
+    response_code: quizData.response_code,
+    createdAt: quizData.createdAt,
+    userId: quizData.userId,
+    questions: quizData.questions.map((question) => ({
+      id: question.id,
       question: question.question,
       correct_answer: question.correct_answer,
-      incorrect_answers: question.incorrectAnswers.map((ia) => ia.text),
+      createdAt: question.createdAt,
+      incorrectAnswers: question.incorrectAnswers.map((ia) => ({
+        id: ia.id,
+        text: ia.text,
+        questionId: ia.questionId,
+      })),
     })),
   };
 
-  res.status(200).json(formattedQuiz);
+  res.status(200).json(modifiedQuizData);
 };
